@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Mölkky Pistelaskuri</h1>
+  <component :is="currentView"></component>
+  <button
+    @click="startGame"
+    :disabled="this.$store.state.players.length < 2"
+    :hidden="visibility"
+  >
+    Aloita
+  </button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PlayerView from "./views/PlayerView.vue";
+import ScoreView from "./views/ScoreView.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PlayerView,
+    ScoreView,
+  },
+  data() {
+    return {
+      currentView: "PlayerView",
+      visibility: false,
+    };
+  },
+  methods: {
+    startGame() {
+      this.currentView = "ScoreView";
+      this.visibility = true;
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
