@@ -1,4 +1,8 @@
 {
+  "include": [
+    "**/*",
+    "src/store.js"
+  ],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
