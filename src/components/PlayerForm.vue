@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="addPlayer">
-    <input v-model="newPlayer" placeholder="nimi" />
-    <button type="submit">Lisää</button>
+    <input id="name" v-model="newPlayer" placeholder="nimi" />
+    <button id="add" type="submit">Lisää</button>
   </form>
 </template>
 
@@ -23,4 +23,25 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#name {
+  padding: 1rem;
+  margin-right: 0.75rem;
+  border: 1px solid #000000;
+  border-radius: 0.25rem;
+  background-color: rgb(255 255 255 / 70%);
+}
+
+#add {
+  padding: 1rem;
+  background-color: black;
+  color: whitesmoke;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #444444;
+  }
+}
+</style>

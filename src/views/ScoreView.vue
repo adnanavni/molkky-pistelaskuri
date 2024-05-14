@@ -2,10 +2,10 @@
   <section id="scoreview" class="view">
     <h2>Pisteet</h2>
     <ScoreButtons />
-    <ScoreList />
     <p>
-      {{ "Vuorossa: " + playerInTurn.name + " " + playerInTurn.score + "/ 50" }}
+      {{ "Vuorossa: " + playerInTurn.name + " " + playerInTurn.score + "/50" }}
     </p>
+    <ScoreList />
   </section>
 </template>
 
@@ -26,4 +26,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+p {
+  font-size: 1.5rem;
+  margin: 0.25rem;
+  text-decoration: underline;
+  cursor: default;
+}
+</style>

@@ -1,9 +1,11 @@
 <template>
-  <section id="playerview" class="view">
-    <h1>Pelaajat</h1>
+  <section class="view">
+    <h2 class="title">Pelaajat</h2>
     <PlayerForm />
     <PlayerList :players="players" />
-    <button @click="shuffle">Sekoita</button>
+    <div id="footer">
+      <button id="shuffle" @click="shuffle">Sekoita</button>
+    </div>
   </section>
 </template>
 
@@ -29,3 +31,35 @@ export default {
   },
 };
 </script>
+
+<style>
+section {
+  flex-direction: column;
+  align-items: center;
+}
+
+PlayerForm {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+}
+
+#footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+#shuffle {
+  margin-bottom: 0;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: whitesmoke;
+  border: none;
+  border-radius: 0.35rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #444444;
+  }
+}
+</style>
