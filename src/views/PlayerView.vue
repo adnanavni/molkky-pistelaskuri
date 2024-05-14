@@ -1,10 +1,10 @@
 <template>
-  <div id="playerlist">
+  <section id="playerview" class="view">
     <h1>Pelaajat</h1>
     <PlayerForm />
     <PlayerList :players="players" />
     <button @click="shuffle">Sekoita</button>
-  </div>
+  </section>
 </template>
 
 <script>

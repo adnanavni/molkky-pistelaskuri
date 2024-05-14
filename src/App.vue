@@ -13,22 +13,33 @@
 <script>
 import PlayerView from "./views/PlayerView.vue";
 import ScoreView from "./views/ScoreView.vue";
+import EndView from "./views/EndView.vue";
 
 export default {
   name: "App",
   components: {
     PlayerView,
     ScoreView,
+    EndView,
   },
   data() {
     return {
-      currentView: "PlayerView",
       visibility: false,
     };
   },
+  computed: {
+    currentView() {
+      if (this.$store.state.endGame) {
+        return "EndView";
+      } else if (this.visibility) {
+        return "ScoreView";
+      } else {
+        return "PlayerView";
+      }
+    },
+  },
   methods: {
     startGame() {
-      this.currentView = "ScoreView";
       this.visibility = true;
     },
   },

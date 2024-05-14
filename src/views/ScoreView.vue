@@ -1,26 +1,27 @@
 <template>
-  <div id="scoringboard">
-    <h1>Pistelaskuri</h1>
+  <section id="scoreview" class="view">
+    <h2>Pisteet</h2>
     <ScoreButtons />
-    <ul>
-      <li v-for="(player, index) in players" :key="index">
-        {{ player.name }}: {{ player.score }}
-      </li>
-    </ul>
-  </div>
+    <ScoreList />
+    <p>
+      {{ "Vuorossa: " + playerInTurn.name + " " + playerInTurn.score + "/ 50" }}
+    </p>
+  </section>
 </template>
 
 <script>
 import ScoreButtons from "../components/ScoreButtons.vue";
+import ScoreList from "../components/ScoreList.vue";
 export default {
   name: "ScoreView",
   components: {
     ScoreButtons,
+    ScoreList,
   },
-  data() {
-    return {
-      players: this.$store.state.players,
-    };
+  computed: {
+    playerInTurn() {
+      return this.$store.state.players[this.$store.state.PlayersTurn];
+    },
   },
 };
 </script>

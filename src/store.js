@@ -6,6 +6,7 @@ export default new Vuex.Store({
     score: 0,
     selectedButtons: [],
     PlayersTurn: 0,
+    endGame: false,
   },
   mutations: {
     addPlayer(state, player) {
@@ -28,7 +29,11 @@ export default new Vuex.Store({
       const oldScore = state.players[state.PlayersTurn].score;
       const sum = parseInt(oldScore) + state.score;
 
-      if (sum >= 50) {
+      if (sum === 50) {
+        state.endGame = true;
+      }
+
+      if (sum > 50) {
         state.players[state.PlayersTurn].score = 25;
       } else {
         state.players[state.PlayersTurn].score = sum;
