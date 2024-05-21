@@ -1,5 +1,7 @@
 <template>
-  <h1 @click="refreshPage">Mölkky Pistelaskuri</h1>
+  <h1 @click="refreshPage">
+    <img src="../public/logo.png" />Mölkky Pistelaskuri
+  </h1>
   <component :is="currentView"></component>
   <button
     id="start-button"
@@ -110,5 +112,10 @@ ul {
   padding: 0;
   font-size: 1.5rem;
   cursor: default;
+}
+
+img {
+  width: 2rem;
+  height: 2rem;
 }
 </style>
