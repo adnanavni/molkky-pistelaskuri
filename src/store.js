@@ -3,6 +3,7 @@ import Vuex from "vuex";
 export default new Vuex.Store({
   state: {
     players: [],
+    originalPlayers: [],
     score: 0,
     selectedButtons: [],
     PlayersTurn: 0,
@@ -48,9 +49,11 @@ export default new Vuex.Store({
 
         if (state.players[state.PlayersTurn].missed === 3) {
           let index = state.players.indexOf(state.players[state.PlayersTurn]);
+          state.originalPlayers = [...state.players];
           state.players.splice(index, 1);
 
           if (state.players.length === 1) {
+            state.players = [...state.originalPlayers];
             state.endGame = true;
           }
         }
