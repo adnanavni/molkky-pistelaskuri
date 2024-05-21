@@ -2,8 +2,8 @@
   <section id="endview" class="view">
     <h1>Peli päättyi</h1>
     <ul>
-      <li v-for="(player, index) in players" :key="index">
-        {{ player.name }}: {{ player.score }} / 50
+      <li v-for="(players, index) in players" :key="index">
+        {{ players.name }}: {{ players.score }} / 50
       </li>
     </ul>
   </section>
@@ -15,7 +15,10 @@ export default {
 
   computed: {
     players() {
-      return this.$store.state.players;
+      const sortedPlayers = [...this.$store.state.players].sort(
+        (a, b) => b.score - a.score
+      );
+      return sortedPlayers;
     },
   },
 };

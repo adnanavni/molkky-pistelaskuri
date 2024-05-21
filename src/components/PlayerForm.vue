@@ -15,7 +15,11 @@ export default {
   methods: {
     addPlayer() {
       if (this.newPlayer) {
-        this.$store.commit("addPlayer", { name: this.newPlayer, score: "0" });
+        this.$store.commit("addPlayer", {
+          name: this.newPlayer,
+          score: 0,
+          missed: 0,
+        });
         this.newPlayer = "";
       }
     },

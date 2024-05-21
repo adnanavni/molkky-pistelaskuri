@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="(player, index) in players" :key="index">
-      {{ player.name }}: {{ player.score }} / 50
+      {{ player.name }}: {{ player.score }} / 50 | {{ player.missed }} / 3
     </li>
   </ul>
 </template>

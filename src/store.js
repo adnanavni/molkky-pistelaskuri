@@ -12,10 +12,12 @@ export default new Vuex.Store({
     addPlayer(state, player) {
       state.players.push(player);
     },
+
     setPlayers(state, players) {
       state.players = players;
     },
-    selectButton(state, index) {
+
+    toggleButton(state, index) {
       if (!state.selectedButtons.includes(index)) {
         state.selectedButtons.push(index);
         state.score = index;
@@ -23,28 +25,55 @@ export default new Vuex.Store({
         if (state.selectedButtons.length >= 2) {
           state.score = state.selectedButtons.length;
         }
+      } else {
+        let i = state.selectedButtons.indexOf(index);
+        state.selectedButtons.splice(i, 1);
+
+        if (state.selectedButtons.length >= 2) {
+          state.score = state.selectedButtons.length;
+        } else if (state.selectedButtons.length === 1) {
+          state.score = state.selectedButtons[0];
+        } else {
+          state.score = 0;
+        }
       }
     },
+
     sendScore(state) {
-      const oldScore = state.players[state.PlayersTurn].score;
-      const sum = parseInt(oldScore) + state.score;
+      const sum = state.players[state.PlayersTurn].score + state.score;
+      const length = state.players.length;
 
-      if (sum === 50) {
-        state.endGame = true;
-      }
+      if (state.score === 0) {
+        state.players[state.PlayersTurn].missed += 1;
 
-      if (sum > 50) {
-        state.players[state.PlayersTurn].score = 25;
+        if (state.players[state.PlayersTurn].missed === 3) {
+          let index = state.players.indexOf(state.players[state.PlayersTurn]);
+          state.players.splice(index, 1);
+
+          if (state.players.length === 1) {
+            state.endGame = true;
+          }
+        }
       } else {
-        state.players[state.PlayersTurn].score = sum;
+        state.players[state.PlayersTurn].missed = 0;
+
+        if (sum === 50) {
+          state.players[state.PlayersTurn].score = sum;
+          state.endGame = true;
+        } else if (sum > 50) {
+          state.players[state.PlayersTurn].score = 25;
+        } else {
+          state.players[state.PlayersTurn].score = sum;
+        }
       }
 
       state.selectedButtons = [];
       state.score = 0;
 
-      state.PlayersTurn = state.PlayersTurn + 1;
-      if (state.PlayersTurn == state.players.length) {
-        state.PlayersTurn = 0;
+      if (length !== state.players.length) {
+        state.PlayersTurn = state.PlayersTurn % state.players.length;
+      } else {
+        state.PlayersTurn = (state.PlayersTurn + 1) % state.players.length;
       }
     },
   },
@@ -60,6 +89,9 @@ export default new Vuex.Store({
     },
     sendScore({ commit }) {
       commit("sendScore");
+    },
+    toggleButton({ commit }, index) {
+      commit("toggleButton", index);
     },
   },
   getters: {

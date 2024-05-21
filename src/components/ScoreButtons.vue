@@ -4,14 +4,16 @@
       class="scorebutton"
       v-for="index in 12"
       :key="index"
-      @click="selectButton(index)"
-      :disabled="isButtonSelected(index)"
+      @click="toggleButton(index)"
+      :class="{ 'button-selected': isButtonDisabled(index) }"
     >
       {{ index }}
     </button>
   </div>
 
-  <button id="next" @click="sendScore">Seuraava {{ "(" + score + ")" }}</button>
+  <button id="next" @click="sendScore">
+    {{ score === 0 ? "Ohi" : "(" + score + ")" }}
+  </button>
 </template>
 
 <script>
@@ -21,15 +23,15 @@ export default {
   props: ["selected"],
   computed: {
     ...mapState(["selectedButtons"]),
-    isButtonSelected() {
-      return (index) => this.selectedButtons.includes(index);
-    },
     score() {
       return this.$store.state.score;
     },
   },
   methods: {
-    ...mapActions(["selectButton", "sendScore"]),
+    ...mapActions(["toggleButton", "sendScore"]),
+    isButtonDisabled(index) {
+      return this.selectedButtons.includes(index);
+    },
   },
 };
 </script>
@@ -75,5 +77,10 @@ export default {
   &:hover {
     background-color: #444444;
   }
+}
+
+.button-selected {
+  background-color: black;
+  color: white;
 }
 </style>
