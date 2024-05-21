@@ -29,23 +29,25 @@ export default {
 
 <style>
 #name {
-  padding: 1rem;
-  margin-right: 0.75rem;
+  padding: 0.75rem;
+  margin-right: 0.5rem;
   border: 1px solid #000000;
   border-radius: 0.25rem;
   background-color: rgb(255 255 255 / 70%);
+  color: #ffffff;
+  font-size: 1rem;
 }
 
 #add {
-  padding: 1rem;
-  background-color: black;
-  color: whitesmoke;
+  padding: 0.5rem;
+  background-color: rgb(255 255 255 / 70%);
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
 
   &:hover {
-    background-color: #444444;
+    background-color: rgb(255 255 255 / 85%);
+    color: #000000;
   }
 }
 </style>

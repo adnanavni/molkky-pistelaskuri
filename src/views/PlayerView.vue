@@ -4,7 +4,9 @@
     <PlayerForm />
     <PlayerList :players="players" />
     <div id="footer">
-      <button id="shuffle" @click="shuffle">Sekoita</button>
+      <button id="shuffle" @click="shuffle" :disabled="disabled">
+        Sekoita
+      </button>
     </div>
   </section>
 </template>
@@ -18,10 +20,13 @@ export default {
     PlayerForm,
     PlayerList,
   },
-  data() {
-    return {
-      players: this.$store.state.players || [],
-    };
+  computed: {
+    players() {
+      return this.$store.state.players;
+    },
+    disabled() {
+      return this.$store.state.players < 2;
+    },
   },
   methods: {
     shuffle() {
@@ -50,16 +55,19 @@ PlayerForm {
 }
 
 #shuffle {
-  margin-bottom: 0;
-  padding: 0.5rem 1rem;
-  background-color: black;
-  color: whitesmoke;
+  padding: 0.5rem;
+  background-color: rgb(255 255 255 / 70%);
   border: none;
-  border-radius: 0.35rem;
+  border-radius: 0.25rem;
   cursor: pointer;
 
   &:hover {
-    background-color: #444444;
+    background-color: rgb(255 255 255 / 85%);
+    color: #000000;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 </style>

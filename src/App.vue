@@ -1,5 +1,5 @@
 <template>
-  <h1>Mölkky Pistelaskuri</h1>
+  <h1 @click="refreshPage">Mölkky Pistelaskuri</h1>
   <component :is="currentView"></component>
   <button
     id="start-button"
@@ -43,6 +43,9 @@ export default {
     startGame() {
       this.visibility = true;
     },
+    refreshPage() {
+      window.location.reload();
+    },
   },
 };
 </script>
@@ -54,12 +57,12 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: #117c13;
-  color: whitesmoke;
+  background-color: #f5f5dc;
 }
 
 h1 {
   margin-top: 1rem;
+  cursor: default;
 }
 
 .view {
@@ -67,28 +70,33 @@ h1 {
   flex-direction: column;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 10);
   padding: 1.5rem;
-  max-height: 85vh;
   width: 20rem;
-  color: black;
-  background-color: #deb887;
+  background-color: #117c13;
   border-radius: 0.35rem;
+  color: #ffffff;
+}
+
+button {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
 }
 
 #start-button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #deb887;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #000000;
   border: none;
-  border-radius: 0.35rem;
+  border-radius: 0.25rem;
   cursor: pointer;
+  font-size: 1.5rem;
 
   &:hover {
-    background-color: #b4966f;
+    background-color: #ffffff;
   }
 
   &:disabled {
-    background-color: #504231;
     cursor: not-allowed;
   }
 }
@@ -98,9 +106,9 @@ h1 {
 }
 
 ul {
-  list-style-type: disclosure-open;
-  padding: 0.25rem;
-  font-size: 1.75rem;
+  list-style-type: decimal;
+  padding: 0;
+  font-size: 1.5rem;
   cursor: default;
 }
 </style>

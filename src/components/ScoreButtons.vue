@@ -41,46 +41,46 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;
-  width: 7rem;
+  width: 10rem;
   justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .scorebutton {
-  border-radius: 1rem;
-  background-color: transparent;
+  border-radius: 1.5rem;
+  background-color: #deb887;
   color: black;
-  font-size: 1.5rem;
-  max-width: 3rem;
-  max-height: 2rem;
+  font-size: 2rem;
+  height: 3rem;
   cursor: pointer;
+  width: 3rem;
+  border: solid 2px black;
+  box-shadow: inset 0px -8px 9px 0px #63523b;
 
   &:hover {
-    background-color: black;
-    color: white;
-  }
-
-  &:disabled {
-    background-color: black;
-    color: black;
+    background-color: #63523b;
   }
 }
 
 #next {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #000000;
+  background-color: rgb(255 255 255 / 70%);
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 0.35rem;
   cursor: pointer;
+  font-size: 1rem;
 
   &:hover {
-    background-color: #444444;
+    background-color: rgb(255 255 255 / 85%);
+    color: #000000;
   }
 }
 
 .button-selected {
-  background-color: black;
-  color: white;
+  background-color: #63523b;
+  box-shadow: none;
 }
 </style>

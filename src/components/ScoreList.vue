@@ -1,7 +1,10 @@
 <template>
   <ul>
-    <li v-for="(player, index) in players" :key="index">
-      {{ player.name }}: {{ player.score }} / 50 | {{ player.missed }} / 3
+    <li id="scorelist" v-for="(player, index) in players" :key="index">
+      <div id="scoreleft">{{ player.name }}</div>
+      <div id="scoreright">
+        {{ player.score }} / 50 | {{ player.missed }} / 3
+      </div>
     </li>
   </ul>
 </template>
@@ -17,4 +20,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#scorelist {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+#scoreleft,
+#scoreright {
+  width: 9rem;
+}
+#scoreright {
+  text-align: right;
+}
+#scoreleft {
+  text-align: left;
+}
+</style>

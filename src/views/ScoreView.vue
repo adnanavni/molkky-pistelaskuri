@@ -1,11 +1,10 @@
 <template>
   <section id="scoreview" class="view">
-    <p>
-      {{ "Vuorossa: " + playerInTurn.name + " " + playerInTurn.score + "/50" }}
-      | {{ playerInTurn.missed + "/3" }}
-    </p>
+    <h2>
+      {{ "Vuorossa: " + playerInTurn.name }}
+    </h2>
     <ScoreButtons />
-    <p>{{ 50 - playerInTurn.score }} jäljellä</p>
+    <span>{{ 50 - playerInTurn.score }} jäljellä</span>
     <ScoreList />
   </section>
 </template>
